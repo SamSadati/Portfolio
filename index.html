@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Writing Portfolio - Sam Sadati</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto Mono', monospace;
+        }
+        /* Style for active navigation link */
+        .nav-link.active {
+            color: #3b82f6; /* A blue color for active state */
+            font-weight: 500;
+        }
+        /* Animation for content fading in */
+        .fade-in {
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Styling for the accordion dropdowns */
+        .accordion-summary {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background-color: #1f2937; /* gray-800 */
+            transition: background-color 0.2s;
+        }
+        .accordion-summary:hover {
+            background-color: #374151; /* gray-700 */
+        }
+        .accordion-summary::-webkit-details-marker {
+            display: none;
+        }
+        .accordion-content {
+            padding: 1rem;
+            border-top: 1px solid #4b5563; /* gray-600 */
+        }
+        /* Custom marker for accordion */
+        .accordion-summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            font-weight: 300;
+            transition: transform 0.2s;
+        }
+        details[open] > .accordion-summary::after {
+            content: '−';
+            transform: rotate(180deg);
+        }
+        /* Style for essay text */
+        .prose {
+            font-family: "Times New Roman", Times, serif;
+        }
+        .prose p, .prose a, .prose li {
+            line-height: 1.15;
+        }
+        /* Added spacing between paragraphs */
+        .prose p {
+            margin-bottom: 1.25rem;
+        }
+        .prose p:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-slate-300">
+
+    <!-- Header & Navigation -->
+    <header class="bg-gray-900/80 backdrop-blur-lg sticky top-0 z-50 border-b border-gray-700">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="text-xl font-bold text-white nav-link">Sam Sadati</a>
+            <ul class="flex items-center space-x-6">
+                <li><a href="#home" class="nav-link text-slate-400 hover:text-white transition-colors">Home</a></li>
+                <li><a href="#portfolio" class="nav-link text-slate-400 hover:text-white transition-colors">Portfolio</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Area -->
+
+    <!-- Home section background image -->
+    <div id="home-view" class="fade-in bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/1169754/pexels-photo-1169754.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');">
+        <!-- Overlay for text readability -->
+        <div class="min-h-[70vh] flex flex-col justify-center items-center text-center px-6 bg-black/70 text-white">
+            <div class="max-w-3xl">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Advanced Writing Portfolio</h1>
+                <p class="text-lg text-slate-200 mb-2">A collection of works by Sam Sadati</p>
+                <p class="text-md text-slate-300">Course: Advanced Writing | Instructor: Prof. Shabnam Naderi</p>
+                <p class="mt-6 text-slate-200">This website presents a collection of my major writing assignments, including final versions and reflective essays that document my writing process and growth throughout the semester.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- All other content is in a separate container that is shown/hidden -->
+    <div id="app-view" class="hidden fade-in">
+        <main class="container mx-auto px-6 py-12">
+            <!-- Portfolio Section -->
+            <section id="portfolio" class="page-section">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-white">My Projects</h2>
+                    <p class="text-slate-400 mt-2">A selection of my essays and projects from the course.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project Cards Here -->
+                    <div class="bg-gray-800 border border-gray-700 overflow-hidden transform hover:-translate-y-1 transition-transform duration-300"><div class="p-6"><h3 class="text-xl font-semibold mb-2 text-white">Argumentative Essays</h3><p class="text-slate-400 mb-4">"Misinformation & AI in Academia"</p><button onclick="showProject('project_argumentative')" class="w-full mt-4 bg-blue-600 text-white px-4 py-2 hover:bg-blue-700 transition-colors">View Projects</button></div></div>
+                    <div class="bg-gray-800 border border-gray-700 overflow-hidden transform hover:-translate-y-1 transition-transform duration-300"><div class="p-6"><h3 class="text-xl font-semibold mb-2 text-white">Descriptive Essay</h3><p class="text-slate-400 mb-4">"Guernica"</p><button onclick="showProject('project3')" class="w-full mt-4 bg-blue-600 text-white px-4 py-2 hover:bg-blue-700 transition-colors">View Project</button></div></div>
+                    <div class="bg-gray-800 border border-gray-700 overflow-hidden transform hover:-translate-y-1 transition-transform duration-300"><div class="p-6"><h3 class="text-xl font-semibold mb-2 text-white">Multimodal Text</h3><p class="text-slate-400 mb-4">"A Green Initiative"</p><button onclick="showProject('project4')" class="w-full mt-4 bg-blue-600 text-white px-4 py-2 hover:bg-blue-700 transition-colors">View Project</button></div></div>
+                    <div class="bg-gray-800 border border-gray-700 overflow-hidden transform hover:-translate-y-1 transition-transform duration-300"><div class="p-6"><h3 class="text-xl font-semibold mb-2 text-white">Problem and Solution Essay</h3><p class="text-slate-400 mb-4">"The Obesity Epidemic"</p><button onclick="showProject('project6')" class="w-full mt-4 bg-blue-600 text-white px-4 py-2 hover:bg-blue-700 transition-colors">View Project</button></div></div>
+                </div>
+            </section>
+            
+            <!-- Project Detail Pages (Hidden by default) -->
+            <div id="project-details" class="hidden">
+                <!-- Merged Argumentative Essays -->
+                <div id="project_argumentative" class="project-content"><div class="max-w-4xl mx-auto"><button onclick="goBackToPortfolio()" class="mb-8 font-medium text-blue-500 hover:text-blue-400 transition-colors">&larr; Back to Portfolio</button><h2 class="text-3xl font-bold text-white mb-6">Argumentative Essays</h2>
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="text-2xl font-semibold text-white mb-4">Essay 1: Spread of Misinformation</h3>
+                            <details class="bg-gray-800 border border-gray-700"><summary class="accordion-summary font-semibold text-xl text-white">Final Version</summary><div class="accordion-content prose max-w-none text-slate-300">
+                                <h4 class="font-bold text-center text-slate-300">Should social media platforms be held responsible for the spread of misinformation?</h4>
+                                <p>Nowadays with the constant advancements of technology and its ever-growing speed, it is very complicated and difficult not to get involved with it and include it in your life. Social media platforms are one of the many things technology has brought us. They are now an essential part of our daily lives and it would be hard to imagine how things could've been without them. But with every blessing comes a curse, and for social media that is “Misinformation”. As misinformation has the possibility to spark drama, or even danger there is a debate whether social media should be held responsible for spreading them.</p>
+                                <p>I argue they shouldn't be held responsible for the spread of misinformation. Why? Well, firstly, it is the users and sources of social media who create this misinformation and not the platforms themselves. In fact, the platforms are only doing what they were designed to do.</p>
+                                <p>Besides, not all information is “misinformation”. There are loads and loads of useful, even life-changing on social media platforms like youtube. You can find any piece of advice on there. I can assure you there's at least 1 video for 80% of the problems you could have. And this deserves praise.</p>
+                                <p>Another point in my argument would be the laxness of the consumers. A very large number of the social media users do not actually put in any work into finding out whether the information they receive is valid or not and so they just believe it as it is. This is a problem as it could cause trouble for the consumers. What they should do is fact-check the information and actually put in the time and effort to reach the truth.</p>
+                                <p>All this aside, misinformation itself would still be around even if social media weren't invented. It is extremely easy to distort information, and even easier to spread it. For example imagine a small village. If you told one person about some random news, it would spread like wildfire. Not to mention the different outcomes for telling different people like a kid or old woman or the baker of the village. And this would even get worse if the news was some misinformation, as misinformation is mostly unusual and noteworthy.</p>
+                                <p>As much as I would like to go on and defend social media in this, there are a few valid arguments against it as well.</p>
+                                <p>To start with, the trust of the consumers. If misinformation occurs too many times the consumers would lose trust and start to have doubts about the source and the particular social media platform. This could also happen if the information is way off the true one and is way too absurd.</p>
+                                <p>But trust is the least of worries about this topic. The more important thing about all this is the consequences of the misinformation. Some of them might be minor and ignorable like the news of someone breaking a record of some kind. But as the misinformation scales up the consequences do too. Just imagine how much impact some news like the assassination of a president or a political figure would have. Or maybe something like the crash of the stock market. All of these are exceptionally important occurrences if they were to happen in real life, but even the false news about these topics would brew up a real big storm in the big social media platforms. And because all of the social media platforms are easy to access, the false news spread very fast.</p>
+                                <p>Now you might think that's the worst outcome of the misinformation being spread, but no. There are even worse consequences. Misinformation about food and drinks, lifestyle and other things that affect your life on a daily basis could be fatal. For instance, a Tuna can needs to be boiled for 20 minutes before you can consume it safely. A false post in which the time needed for the can is anything less than 20 minutes could take the life of some poor, oblivious guy. Some incorrect info about mixing drinks could have the same results. And this just doesn't include human lives, but also the life of every living creature. Maybe someone's pet dog would die because the owner read some incorrect info about chocolate being good for dogs.</p>
+                                <p>In conclusion, I think social media platforms shouldn't be held responsible for the spread of misinformation, but the people who make these incorrect info and sometimes even deliberately publicize them. I also think everyone who uses social media should actually research every bit of information they receive and confirm its integrity by themselves. This way the rate of misinformation being spread lowers considerably and way less people get tangled in the web of false information. Also the social media platforms wouldn't take all the blame for what they haven't done.</p>
+                            </div></details>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold text-white mb-4">Essay 2: AI in Academia</h3>
+                            <details class="bg-gray-800 border border-gray-700"><summary class="accordion-summary font-semibold text-xl text-white">Final Version</summary><div class="accordion-content prose max-w-none text-slate-300">
+                                <h4 class="font-bold text-center text-slate-300">Should university students be allowed to use AI for their assignments?</h4>
+                                <p>With the ever increasing pace of technology and its advancements in every field, it wouldn't have taken a rocket scientist to predict the release of AI. But to estimate the vast possibilities that it would bring would have been a near impossible task.</p>
+                                <p>As of today AI is extremely advanced. Not only that, it also has a very broad set of capabilities. There are hundreds, maybe even thousands of different AI models that are currently on the internet and ready to be used, each one having a specific task.</p>
+                                <p>AI has become so commonplace that nearly anyone can access it with just a touch. As it is integrated in almost every smartphone, laptop or really any smart device. Naturally with AI being so easy to use AND access, it will have a staggering amount of users. This usage can be either beneficial or harmful. Personally speaking, I would not condemn or prohibit the use of AI, as it is really helpful.</p>
+                                <p>It is a great teacher since it is a source of infinite knowledge. That is because it gathers information from all over the internet, which means you hardly would find it lacking information or unable to help you with a subject. Also, because it isn’t a human, it won’t punish you for giving the wrong answer or not knowing the correct one. So students wouldn't have to worry about being wrong, and their stress would decrease noticeably.</p>
+                                <p>Another point worth mentioning is that it can explain anything; from the most basic subjects to the most complex and complicated quantum equations. And to make it more fun and suitable for yourself, you can customize the way it explains everything.</p>
+                                <p>But sometimes just explaining isn't enough. There may be some situations in which the student just doesn't accept or understand the basic concept of the assignment. It could be because of not paying attention in the class, not liking the subject or simply just not understanding it.</p>
+                                <p>In these situations requesting help from classmates may not suffice. And trusted adults might not be able to explain it either. But AI can give the students some insights or open a whole new perspective which they haven't even heard about. For example, the subject of ‘Naturism’ may not be as well known as other subjects you can think of. Maybe even your classmates don't know about it. But a single question from AI and you will be on your way to learn ‘Naturism’. Let me give you another example. Imagine a difficult math equation. You begin to solve it the way you have always been taught, but it just doesn't work this time. AI will give you a new perspective on how to look at it and solve it.</p>
+                                <p>And as we all know, doing assignments can be boring. VERY boring. So a little help from the AI will give you the motive to actually get the assignment done while making it less mind numbing.</p>
+                                <p>But let's not just ignore all the harm it could bring as well.</p>
+                                <p>Firstly, it will make the students lazy and uninterested. Giving your assignment to the AI every time will make you lazy. Sure, maybe asking AI to do your assignment when you're low on time or preoccupied with something more important sometimes could be a good reason, but doing it every time is harmful.</p>
+                                <p>Also with AI doing your assignment, you won't actually use your own skills, therefore they will become weaker and even forgotten through the time. This just defies the concept of being a student as you'll have to learn everything yourself and try to use and improve your skills. Otherwise your education will be pointless and a waste of time.</p>
+                                <p>The other point that I can mention is the fact that it is unethical to ONLY use AI. Your professor wants to measure your skills and give you the score you're worthy of, and using AI defeats that purpose.</p>
+                                <p>In conclusion I think students should be allowed to use AI for their assignments but under conditions that won’t harm themselves or diminish the efforts of others.</p>
+                            </div></details>
+                        </div>
+                        <details class="bg-gray-800 border border-gray-700"><summary class="accordion-summary font-semibold text-xl text-white">Reflective Essay</summary><div class="accordion-content prose max-w-none text-slate-300">
+                            <p>Being absent in the first session, this was the first essay of this semester for me. Safe to say it was a bit tricky to get everything right, as it was a completely new way of writing essays. Well, at least for me. I had never written a text, essay or anything like it in an argumentative way. But now I can confidently say that it is a very important type of writing that can be extremely useful. Therefore learning it AND mastering it won't be a waste of time.</p>
+                            <p>In this type of essay writing, you are given a highly controversial topic. As with most controversial topics, you naturally pick a side. People have their own reasons as to why they picked that side, and that is totally acceptable. But an immense number of people never even think about the other side.</p>
+                            <p>This is where this type of essay comes in handy. How so? By making the writer ask themselves “what was the reasoning of the people who picked this side of the controversy?”. This opens a new door of possibilities to the writer and engages critical thinking in a great way. What I mean by this is the fact that the writer has to think in a brand new way. Even thinking in the opposite direction of what they were used to.</p>
+                            <p>This doesn't only engage critical thinking and tickle a part of your brain that hasn't been touched. It could actually lead to a life changing discovery. I'm not exaggerating this! I am speaking from experience and it has happened to me on multiple occasions. One time I was arguing about a subject with a friend and I suddenly asked myself: what if I'm wrong about this? Later, I thought about it from his perspective and reached a point of agreement.</p>
+                            <p>In conclusion, this lesson wasn't just a “writing lesson” for me. It turned out to be more of a “life lesson”. I am very grateful that I got to learn about it and I will continue to use it in order to make life easier for myself. My advice for anyone writing an argumentative essay would be to actually question the reasoning that is contrary to yours and don't just reject it blindly. It will make you not just a better writer but a better person overall.</p>
+                        </div></details>
+                    </div>
+                </div></div>
+                <!-- Project 3: Descriptive Essay -->
+                <div id="project3" class="project-content"><div class="max-w-4xl mx-auto"><button onclick="goBackToPortfolio()" class="mb-8 font-medium text-blue-500 hover:text-blue-400 transition-colors">&larr; Back to Portfolio</button><h2 class="text-3xl font-bold text-white mb-4">Descriptive Essay</h2><div class="space-y-4">
+                    <details class="bg-gray-800 border border-gray-700"><summary class="accordion-summary font-semibold text-xl text-white">Final Version</summary><div class="accordion-content prose max-w-none text-slate-300">
+                        <p>This is a very strange painting. Too strange. I can only guess what these creatures are. A bull, a fox and some humans maybe? All of the humans seem to be suffering.</p>
+                        <p>The first human on the right seems to be drowning in lava. The head next to it is a distressed woman and the woman in the bottom looks like she's running away with her huge feet.</p>
+                        <p>In the middle, at the bottom there is a hand clutching onto a broken sword. The hand itself seems to be detached from the body which I'm assuming is from the man to the left of it. The man's mouth is open, suggesting that he's in agony or pain. And at the very left of the painting there is a volcano with smoke coming out of it, showing it is possibly going to erupt or had erupted. Beside the volcano there is a woman holding her son in her hands with her head facing upwards to the sky. I'm guessing she's also shouting in agony for the loss of her child.</p>
+                        <p>There is also some interdimensional stuff going on in the middle of the painting which I really can’t guess what it might be. It is just too crowded and complicated.</p>
+                    </div></details>
+                    <details class="bg-gray-800 border border-gray-700"><summary class="accordion-summary font-semibold text-xl text-white">Reflective Essay</summary><div class="accordion-content prose max-w-none text-slate-300">
+                        <p>To be completely honest I didn't like this assignment that much. Because it was an abstract artwork. If you spend 1 hour with me you could tell I'm not good with artworks. At least not any of the modern ones like this. I prefer real art. Like the painting of a landscape.</p>
+                        <p>But still, this assignment made me think in a new way. Even though I didn't like it, I can say it helped me because a change of directions is good once in a while.</p>
+                        <p>In conclusion, it wasn't the most interesting assignment for me, but it definitely can be helpful in free writing and describing skills.</p>
+                    </div></details>
+                </div></div></div>
+                <!-- Project 4: Multimodal Text -->
+                <div id="project4" class="project-content"><div class="max-w-4xl mx-auto"><button onclick="goBackToPortfolio()" class="mb-8 font-medium text-blue-500 hover:text-blue-400 transition-colors">&larr; Back to Portfolio</button><h2 class="text-3xl font-bold text-white mb-4">Multimodal Text</h2><div class="space-y-4">
+                    <details class="bg-gray-800 border border-gray-700"><summary class="accordion-summary font-semibold text-xl text-white">Final Version</summary><div class="accordion-content prose max-w-none text-slate-300">
+                        <video controls class="w-full">
+                            <source src="prr2.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div></details>
+                    <details class="bg-gray-800 border border-gray-700"><summary class="accordion-summary font-semibold text-xl text-white">Reflective Essay</summary><div class="accordion-content prose max-w-none text-slate-300">
+                        <p>Making a multimodal text was the most fun assignment of the semester. Simply because it didn't need to be written at all! I'm sure most students will enjoy this type of assignment more than the usual essay writing ones. But not writing anything isn't the only reason it was fun.</p>
+                        <p>What I learned from this assignment was the fact that a written text isn't the only way you can convey messages. Other than writing, which is the textual way, there are four other ways we can deliver a message. These four include: visual, aural, gestural and spatial.</p>
+                        <p>This assignment allowed us to choose how we want to convey meaning. This assignment in specific, also had an important message to convey as it was about a worldwide problem that affects us all. A bonus as to why I liked it.</p>
+                        <p>For example, I would much rather make a meme {visual} about a subject than write a full essay{textual} about it. This may not be the case with another person, as all people have different preferences. One may like to talk about the assignment{aural} in a podcast way, while another person wouldn't enjoy that as much. All of this doesn't really matter with this type of assignment as everyone is free to choose their preferred way.</p>
+                        <p>I also learned how to specifically space the text in different areas, make them seem more important by bolding them and using different fonts for different tones of a message. The last thing I learned was how to use gestures effectively.</p>
+                    </div></details>
+                </div></div></div>
+                <!-- Project 6: Problem and Solution Essay -->
+                <div id="project6" class="project-content"><div class="max-w-4xl mx-auto"><button onclick="goBackToPortfolio()" class="mb-8 font-medium text-blue-500 hover:text-blue-400 transition-colors">&larr; Back to Portfolio</button><h2 class="text-3xl font-bold text-white mb-4">Problem and Solution Essay</h2><div class="space-y-4">
+                    <details class="bg-gray-800 border border-gray-700"><summary class="accordion-summary font-semibold text-xl text-white">Final Version</summary><div class="accordion-content prose max-w-none text-slate-300">
+                        <h3 class="font-bold text-center">The Obesity Epidemic</h3>
+                        <p>One of the most widespread problems around the world nowadays is obesity. Over the recent years the obesity index has grown significantly. To the point that it has become a priority in the list of problems for many nations.</p>
+                        <p>That is because an unhealthy society would not be able to perform as good as a healthy one. Also because nations don't want to just lose their population because of a problem that can be prevented so easily. But what is obesity exactly? Obesity is the state or condition of being very fat or overweight. Basically meaning you weigh a lot more than you should. That is if you want to stay healthy of course.</p>
+                        <p>But being a few kilograms heavier than an average person wouldn't hurt you right? Well I bear saddening for you if you think that way. Being overweight probably isn't going to be fatal but being obese definitely is. Still, this doesn't mean being only overweight is healthy. Being overweight can throw off your hormonal balance as stated in this research. Hormonal imbalance is only one of the many problems being overweight can cause. Heart disease, diabetes, high blood pressure, high cholesterol, liver disease, sleep apnea and certain cancers are other effects that it could have.</p>
+                        <p>But that's only being overweight. What about obese people? Obesity is a much more serious problem as it is way more fatal and it is harder to treat as well. Being obese carries the risks of diseases like high blood pressure,type 2 diabetes,gallbladder disease, high cholesterol, infertility, joint pain as mentioned in this article</p>
+                        <p>Also because the obese person has gained just too much weight it can be way harder for them to lose it. Obesity has always been a problem for society, but in the last two decades or so, it has grown worse exponentially. One of the first countries that come to mind is the US. The obesity rates in the US have skyrocketed since the year 2000. One of the most prominent causes of obesity in the US is the amount of accessibility to fast food and junk food. What this means is that fast food restaurants are so extremely widespread in the US that you would find one every kilometer. There were 213,155 Fast Food Restaurants in the US as of 2024. And this number had grown by 1.5 percent from 2023. But the ever increasing number of fast food restaurants isn’t the only problem. The fact that most of these fast food chains are originally found by the Americans makes them way more easy to access and also more intertwined with the American lifestyle. But fast food chains aren't the only major problem. The other noticeable cause of obesity in the US is the junk food in the supermarkets. Almost every snack in the supermarkets of the United States has an obscene amount of sugar in it. But sugar isn't the star of the show. High fructose corn syrup is in most of the snacks in the us. Corn syrup has shown strong relation with obesity and gaining weight. Another point to mention is the fact that the supermarkets are also very easily accessible in the US. These factors make gaining weight and holding onto it a very common phenomenon in the US. The situation in the US is so incredibly bad that scientists predict that half of its population will be obese by 2030.</p>
+                        <p>With all this you might think that obesity is just out of control and it can not be stopped or prevented. However, quite the opposite is true. How? Well losing weight is a very simple concept. You have to consume less calories than you burn. Or burn more than you consume. It is that simple. If all the people around the world understood this simple concept, obesity rates would plummet.</p>
+                        <p>But how to make this concept work? Well, one way would be putting yourself in a caloric deficit. This means eating slightly less than your daily consumption. You might ask how would you know how much you consume in the first place? Well there are tons of apps on the internet that you can use to measure the amount of calories you consume like the CalAI app. Another way would be going to the gym consistently and regularly. By doing so, you increase the amount of calories you burn therefore you will lose weight.</p>
+                        <p>In conclusion, obesity and being overweight is a major problem and should be addressed as soon as possible. But the good thing is that its solutions are obvious, easy and accessible as long as the person would actually try to do it.</p>
+                        <p><em>(Links are available on Google Docs)</em></p>
+                    </div></details>
+                    <details class="bg-gray-800 border border-gray-700"><summary class="accordion-summary font-semibold text-xl text-white">Reflective Essay</summary><div class="accordion-content prose max-w-none text-slate-300">
+                        <p>This type of essay is one of my favorites. Why? Because it allows the writer to choose the subject they want to write about freely. And doesn't cage them with a pre-selected subject that their professor chose because of personal interest. Therefore the writer is free and can write the essay uncompromised. There are other reasons as to why I enjoy this type of essay which I will share later.</p>
+                        <p>In this form of essay, you have to choose a problem which is widespread in the whole world. Mention the root causes, the ways it has spread, why it is a problem and finally provide your own suggested solution. This engages the problem solving part of the brain which is essential for everyone to learn, especially kids at a young age.</p>
+                        <p>In this type of writing, I learned how to list the different categories of a subject, how to search for studies about it online, how to merge the data into my text and hyperlinking them. It also taught me how to respectfully address the people who are dealing with this problem and give them hope while trying not to frustrate them.</p>
+                        <p>The other reason why I like this form of writing is the solution part. Everyone can nag about a problem and turn it into sentences, but what people don't realize is the fact that most of the people can only get that far, and don't have a solution to provide or haven't ever thought about one.</p>
+                        <p>I was like this too. However, writing a problem/solution essay led me to the fact that you shouldn't just nag about problems. You have to actively think of a solution. Afterall, this is the same way scientists solve problems. By thinking.</p>
+                        <p>In conclusion, this “writing lesson” is another life lesson for me.Just think about it. How many times have you nagged about a problem just for the sake of nagging, without any other purpose? If we all try to solve the problems we nag about, we’ll have solutions for them far more easily and there'd be a lot less problems in the world.</p>
+                    </div></details>
+                </div></div></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 border-t border-gray-700 mt-16">
+        <div class="container mx-auto px-6 py-8 text-center text-slate-400">
+             <!-- User's name and correct year added -->
+            <p>&copy; 2025 Sam Sadati. All Rights Reserved.</p>
+            <p class="text-sm mt-1">Created for Advanced Writing, Allameh Tabataba'i University.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- This script handles the single-page navigation ---
+
+        // Get references to the main view containers
+        const homeView = document.getElementById('home-view');
+        const appView = document.getElementById('app-view');
+        
+        // Get references to content inside the app view
+        const pageSections = appView.querySelectorAll('.page-section');
+        const projectDetailsContainer = document.getElementById('project-details');
+        const allProjectContents = document.querySelectorAll('.project-content');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        // Function to switch between major views (Home, Portfolio, About)
+        const showView = function(viewId) {
+            // First, hide everything inside the main app container
+            pageSections.forEach(function(s) { s.style.display = 'none'; });
+            projectDetailsContainer.classList.add('hidden');
+            allProjectContents.forEach(function(p) { p.style.display = 'none'; });
+
+            // Update active state on navigation links
+            navLinks.forEach(function(link) {
+                link.classList.toggle('active', link.getAttribute('href').substring(1) === viewId);
+            });
+
+            // Show the correct top-level container (home vs. the rest of the app)
+            if (viewId === 'home') {
+                homeView.classList.remove('hidden');
+                appView.classList.add('hidden');
+            } else {
+                homeView.classList.add('hidden');
+                appView.classList.remove('hidden');
+
+                // Show the correct section within the app (portfolio or about)
+                const targetSection = document.getElementById(viewId);
+                if (targetSection) {
+                    targetSection.style.display = 'block';
+                }
+            }
+            window.scrollTo(0, 0); // Scroll to top on every view change
+        };
+
+        // Function to show a specific project's details
+        const showProject = function(projectId) {
+            // Ensure the main app view is visible and home is hidden
+            homeView.classList.add('hidden');
+            appView.classList.remove('hidden');
+
+            // Hide the main page sections (portfolio, about)
+            pageSections.forEach(function(s) { s.style.display = 'none'; });
+            
+            // Show the project details container and the specific project
+            projectDetailsContainer.classList.remove('hidden');
+            document.getElementById(projectId).style.display = 'block';
+            window.scrollTo(0, 0);
+        };
+
+        // Function to return to the main portfolio grid
+        const goBackToPortfolio = function() {
+            showView('portfolio');
+        };
+
+        // Add click event listeners to all navigation links
+        navLinks.forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                showView(targetId);
+            });
+        });
+
+        // Show the home view by default when the page loads
+        window.addEventListener('load', function() {
+            showView('home');
+        });
+    </script>
+
+</body>
+</html>
